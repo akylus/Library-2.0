@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+@import "bourbon";
+@import "neat";
+
+/*$base-duration: 500ms;*/
+
+$color-1: #4054B2;
+$color-2: #B73E35;
+$color-3: #2ecc71;
+
+$sm: new-breakpoint(min-width 320px);
+$med: new-breakpoint(min-width 768px);
+$lg: new-breakpoint(min-width 1024px);
+
+*, *:before, *:after {
+	box-sizing: border-box;
+	outline: none;
+}
+
+html {
+	font-family: "Calibre", "Helvetica Neue", "Helvetica", sans-serif;
+	font-size: 16px;
+	font-smooth: auto;
+	font-weight: 300;
+	line-height: 1.5;
+	color: #444;
+}
+
+body {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	// background-color:darken($color-1, 4%);
+}
+
+button {
+	cursor: pointer;
+}
+
+button, input {
+	border: none;
+}
+
+.hide { display: none; }
+
+.app {
+	position: relative;
+	display: block;
+	width: 23.4375rem;
+	height: 41.6875rem;
+	background-color: whitesmoke;
+	box-shadow: 0 0 30px rgba(black,0.2);
+	overflow: hidden;
+	
+	.login, .signup {
+		position: absolute;
+		//display: none;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 50%;
+		background-color: $color-1;
+		font-family: 'Roboto Mono', monospace;
+		font-size: 1.5rem;
+		font-weight: 400;
+		color: white;
+		transition: all 0.25s linear;
+		overflow: hidden;
+		z-index: 2;
+	}
+	
+	.login {
+		top: 0;
+		border-bottom: 1px solid white;
+		
+		&.active {
+			height: 10%;
+			border-bottom: none;
+		}
+		
+		&.inactive {
+			height: 5%;
+			font-size: 1rem;
+			border-bottom: none;
+		}
+	}
+	
+	.signup {
+		bottom: 0;
+		border-top: 1px solid white;
+		
+		&.active {
+			height: 10%;
+			border-top: none;
+			background-color: $color-2;
+		}
+		
+		&.inactive {
+			height: 5%;
+			font-size: 1rem;
+			background-color: $color-2;
+			border-top: none;
+		}
+	}
+	
+	.login-form {
+		position: absolute;
+		//display: none;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 60px 30px 50px;
+		background-color: lighten($color-1,10%);
+		animation: slideUp 0.25s linear;
+		z-index: 0;
+		
+		h2 {
+			font-size: 1.85rem;
+			font-weight: 300;
+			color: white;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		
+		svg {
+			position: relative;
+			display: block;
+			width: 75px;
+			height: 75px;
+			margin: 0 auto 1.5rem;
+			border-radius: 50%;
+			box-shadow: 0 0 15px darken($color-1,10%);
+			
+			.mountains {
+				fill: $color-2;
+			}
+			
+			.circle {
+				fill: white;
+			}
+		}
+		
+		input {
+			position: relative;
+			display: block;
+			width: 100%;
+			margin: 0 0 0.5rem;
+			padding: 0.875rem 0.5rem;
+			border-radius: 5px;
+			//color: $color-1;
+			
+			&:focus {
+				box-shadow: 0 0 10px rgba(black,0.3);
+			}
+		}
+		
+		.button {
+			position: relative;
+			width: 100%;
+			margin-top: 1rem;
+			padding: 0.625rem 0.5rem;
+			background-color: darken($color-1,15%);
+			box-shadow: 0 0 30px rgba(black,0.2);
+			color: white;
+			border-radius: 5px;
+		}
+		
+		p {
+			color: white;
+			font-size: 14px;
+			text-align: center;
+		}
+	}
+	
+	.signup-form {
+		position: absolute;
+		//display: none;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 60px 30px 50px;
+		background-color: lighten($color-2,10%);
+		animation: slideDown 0.25s linear;
+		z-index: 0;
+		
+		h2 {
+			font-size: 1.85rem;
+			font-weight: 300;
+			color: white;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		
+		svg {
+			position: relative;
+			display: block;
+			width: 75px;
+			height: 75px;
+			margin: 0 auto 1.5rem;
+			border-radius: 50%;
+			box-shadow: 0 0 15px darken($color-2,10%);
+			
+			.mountains {
+				fill: $color-1;
+			}
+			
+			.circle {
+				fill: white;
+			}
+		}
+		
+		input {
+			position: relative;
+			display: block;
+			width: 100%;
+			margin: 0 0 0.5rem;
+			padding: 0.875rem 0.5rem;
+			border-radius: 5px;
+			//color: $color-1;
+			
+			&.half {
+				width: 49%;
+				display: inline-block;
+				float: left;
+				
+				&:nth-of-type(1) {
+					margin-right: 2%;
+				}
+			}
+			
+			&:focus {
+				box-shadow: 0 0 10px rgba(black,0.3);
+			}
+		}
+		
+		.button {
+			position: relative;
+			width: 100%;
+			margin-top: 1rem;
+			padding: 0.625rem 0.5rem;
+			background-color: darken($color-2,15%);
+			box-shadow: 0 0 30px rgba(black,0.2);
+			color: white;
+			border-radius: 5px;
+		}
+		
+		p {
+			color: white;
+			font-size: 14px;
+			text-align: center;
+		}
+	}
+}
+
+
+@keyframes slideUp {
+	0%   { 
+		transform: translateY(50px);
+		opacity: 0.2;
+	}
+	100% { 
+		transform: translateY(0px); 
+		opacity: 1.0;
+	}
+}
+
+@keyframes slideDown {
+	0%   { 
+		transform: translateY(-50px);
+		opacity: 0.2;
+	}
+	100% { 
+		transform: translateY(0px); 
+		opacity: 1.0;
+	}
+}
